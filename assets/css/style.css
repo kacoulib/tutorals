@@ -1,0 +1,219 @@
+html{
+	overflow-x: hidden;
+	font-size: 16px;
+}
+		/*header*/
+header{
+	position: fixed !important;
+	margin: 4rem 0 0 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+		/*header nav*/
+header ul li{
+	list-style: none;
+}
+#nav> li:hover{
+	border-left: 1px solid #563d7c;
+}
+#nav li.active{
+	position: relative;
+	left: -5px;
+	border-left: 2px solid #563d7c;
+}
+
+header ul li a{
+	display: block;
+    padding: 4px 20px;
+    font-size: .8rem;
+    font-weight: 500;
+    color: #767676;
+    text-decoration: none;
+}
+header ul li a:hover{
+    text-decoration: none;
+}
+
+		/*header nav info*/
+header #nav_info{
+	position: relative;
+	padding-top: 50px;
+	margin-top: 300px;
+}
+header #nav_info::before{
+	content: '';
+	position: absolute;
+	top: 25px;
+	left: 5%;
+	width: 100px;
+	border-top: 1px dotted #563d7c;
+}
+header #nav_info li span:first-child{
+	display: inline-block;
+	margin-right: 5px;
+	color: red;
+}
+
+
+		/*container or content*/
+#container{
+	float: right !important;
+}
+#container h3{
+	padding: 15px 0 0 20px;
+	margin-top: 0;
+}
+#container section h2{
+	padding-top: 2rem;
+}
+pre{
+	display: inline-block;
+	padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f7f7f9;
+    border-radius: .25rem;
+}
+.info_bule{
+	display: inline-block;
+	position: relative;
+	z-index: 9;
+}
+.info_bule::after{
+	content: '';
+	display: block;
+	width: 95%;
+	margin: auto;
+	border-bottom: 1px dotted gray;
+}
+.info_bule:hover >div{
+	display: block !important;
+}
+.info_bule >div{
+	position: absolute;
+	font-size: .8rem;
+	white-space: nowrap;
+	
+	transform: translateX(-50%) translateY(calc(-100% - 10px));
+}
+.info_bule >div> div{
+	position: relative;
+}
+.info_bule.low_index >div> div{
+	top: -5px;
+}
+.info_bule>div>div::after{
+	content: '';
+	position: relative;
+	top: -5px;
+	display: block;
+	width: 0;
+	height: 0;
+	border: 5px solid transparent;
+	border-color: rgba(0, 0, 0, 0.16) transparent transparent;
+	margin: auto;
+}
+.info_bule >div> div p{
+	padding: 5px 2rem;
+	background: rgba(215, 215, 215, 0.97);
+}
+.info_bule.low_index >div> div p{
+	box-shadow: 1px 1px 2px #757575;
+}
+.info_bule >div> div form{
+	text-align: right;
+}
+.info_bule >div> div form button{
+	margin-top: -15px;
+}
+
+		/*container or content*/
+footer{
+	position: fixed;
+	width: 100%;
+	bottom: -200px;
+	z-index: 10;
+
+    -webkit-transition: bottom .2s; /* Safari */
+    transition: bottom .2s;
+}
+
+
+		/*others and anims*/
+
+/*anim*/
+.show_footer{
+	bottom: 0px;
+
+    -webkit-transition: bottom .2s; /* Safari */
+    transition: bottom .2s;
+}
+
+footer form{
+	position: relative;
+	top: 0;
+	font-size: .8rem;
+}
+
+footer #confirm_btns{
+	position: absolute;
+	top: -45px;
+	width: 100%;
+	text-align: center;
+}
+footer #confirm_btns button{
+	display: inline-block;
+	margin: 0 5px; 
+}
+footer form textarea{
+	font-size: 1.8rem;
+	min-height: 150px;
+	padding: 15px;  
+	background: rgba(0, 0, 0, 0.7);
+    color: rgba(255,255,255,0.7);
+}
+
+footer,
+footer form,
+footer form textarea
+{
+	width: 100%;
+}
+
+/*other*/
+code{
+	position: relative;
+	display: inline-block;
+	margin: 10px 0;
+}
+.btn.glyphicon-pencil{
+	padding: 0 5px;
+}
+.hide{
+	display: none;
+}
+.low_index{
+	z-index: 8;
+}
+.copy{
+	position: absolute;
+	right: -50px;
+	top: -50%;
+}
+.copy::after{
+	content: 'copy';
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: white;
+}
+.copy:hover::after{
+	background-color: purple;
+	color: white;
+}

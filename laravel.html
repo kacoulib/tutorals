@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doc laravel</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div id="wrapper" class="row">
+		<header class="col-md-4"></header>
+		<section id='container' class="col-md-8">
+			<section>
+				<h2>instalation</h2>
+				<code class="to_copy">composer create/project laravel/laravel --prefert-dist 'Nom_du_dossier'</code>
+				<h3>1.configuration de l'environement</h3>
+				<h3>2.seconde config de l'env</h3>
+				<p>Dans le fichier .env situer à la racine du dossier, remplir les informations de la base de donnée.</p>
+
+				<p></p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</section>
+			<section>
+				<h2>instalation 2</h2>
+				<h3>installer composer</h3>
+				<code class="to_copy">composer create/project laravel/laravel --prefert-dist 'Nom_du_dossier'</code>
+				<code class="to_copy">1</code>
+				<code class="to_copy">2</code>
+				<code class="to_copy">laravel/laravel</code>
+
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</section>
+			<section>
+				<h2>instalation 3 and</h2>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>			<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br><br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</section>
+		</section>
+
+	</div>
+	<footer id="footer">
+		<form>
+			<textarea curentInfoBule=''></textarea>
+			<div id="confirm_btns">
+				<button type="button" class="btn btn-success glyphicon glyphicon-ok"></button>
+				<button type="button" class="btn btn-danger glyphicon glyphicon-remove"></button>
+			</div>
+		</form>
+	</footer>
+	<script type="text/javascript" src='assets/js/jquery-3.0.0.min.js'></script>
+	<script type="text/javascript" src='assets/js/polyfls.js'></script>
+	<script type="text/javascript" src='assets/js/db.js'></script>
+	<script type="text/javascript">
+
+// generating the menu elements
+		$('header').prepend(template_menu($('#container section')));
+
+	// menu element on click
+		$('#nav li').on('click', function(){
+			$('header ul li').removeClass('active');
+			$(this).addClass('active');
+		});
+		$('#nav li ul li a').on('click', function(){
+			$('#nav li ul li a').css('padding-left', '20px');
+			$(this).css('padding-left', '0px');
+		});
+
+	// generating the menu info elemnents
+	let info_menus = template_nav_info(App.menu_info.html, App.menu_info.className);
+	$('header').append(info_menus);
+
+// events handler
+
+	// info bule button events
+		$('body').on('click', '.info_bule button', function(){
+			let _bule = $(this).parents('.info_bule');
+				_footer = $('#footer'),
+				__current_node = get_parent(this, '.info_bule'),
+				val = $(_bule).find('p').text();
+
+			$(_footer).attr('infoBuleTitle', get_first_node(__current_node));
+			$(_footer).attr('currentInfoBule', $(_bule).attr('id')).addClass('show_footer');
+			$(_footer).find('textarea').text(val).focus();
+
+			// set className hide to all .info_bule
+			$('.info_bule>div').addClass('hide');
+			// remove className hide to this specifyc element
+			$(_bule).addClass('low_index').find('div').removeClass('hide');
+
+		});
+
+	// footer events
+		$('footer .btn-success, footer .btn-danger').on('click',function(e){
+			let _footer = $('#footer'),
+			_current_info_bule = '#' + $(_footer).attr('currentInfoBule'),
+			db_key = $(_footer).attr('infoBuleTitle').trim(),
+			textarea_val = $('footer textarea').val();
+
+		// update app set_db
+			// if it's the confirm button
+			if ($(this).hasClass('btn-success')){
+				App['set_db'][db_key] = textarea_val;
+				$(_current_info_bule).find('p').text(textarea_val);
+			}
+
+			$(_footer).removeClass('show_footer');
+			$(_current_info_bule).find('>div').addClass('hide');
+		});
+
+
+// init
+
+		(function(){
+		// trigger the menu list hash
+			if (window.location.hash) {
+				let hash = window.location.hash;
+				$('header li a[href="'+hash+'"]').trigger('click');
+			}
+
+		// find in db any match element to retrieve his template_info_bule
+			findAndReplace('#container');
+	
+		// set no redirection on form click
+			$('form').submit(function(e){
+				e.preventDefautl();
+			});	
+
+		// append an hr after each code balise
+			$('code').after('<br>');
+
+		// add id to codes
+			$('code').each((i, e)=>{ $(e).attr('id', 'code_'+i); });
+		
+		// add copy to code
+			$('code').append('<span class="copy"></span>');
+			$('.copy').on('click', function(){
+				copyText(get_parent(this, 'code'));
+			});
+
+		// add target="_blank" to code links
+			$('code a').attr('target', '_blank');
+
+		// nav_info
+			$('#nav_info ul li span:first-child').on('mouseover', function(){
+				let _selector = $(this).text();
+				console.log(get_parent(this, 'ul'));
+				console.log($(_selector));
+			})
+		})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				// on selection
+		// $('#container section').on('mouseup', function(e){
+		// 	if (getSelectionText()){
+		// 		let selectedPart = getSelectionText(),
+		// 			elem = $(e.target),
+		// 			elemVal = $(e.target).text();
+
+		// 		// add position relative to the elem
+		// 		$(elem).css('position', 'relative');
+
+		// 		// inject a span with class info_bule into the element
+		// 		let newHtml = '<span class="info_bule">'+selectedPart+template_info_bule('Please field the description')+'</span>',
+		// 		result = $(elem).html().replace(selectedPart, newHtml);
+		// 		console.log(result)
+		// 		$(elem).html(result);
+		// 	}
+		// });
+	</script>
+</body>
+</html>
